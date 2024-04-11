@@ -119,16 +119,15 @@ public class Application {
    * Req. 9 – Estimates the address energy bill.
    */
   public void estimateAddressBill() {
-    String addressRegistration = ui.inputAddressRegistration();
-    Address address = api.findAddress(addressRegistration);
+    String addressRegistration = this.ui.inputAddressRegistration();
+    Address address = this.api.findAddress(addressRegistration);
 
     if (address == null) {
       ui.showMessage("Endereço não encontrado!");
-      return;
+    } else {
+      EnergyBill energyBill = new EnergyBill(address, true);
+      ui.showMessage("Valor estimado da conta: " + energyBill.estimate());
     }
-
-    EnergyBill energyBill = new EnergyBill(address, true);
-    ui.showMessage("Valor estimado da conta: " + energyBill.estimate());
   }
 
   /**
