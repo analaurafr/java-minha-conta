@@ -1,6 +1,7 @@
 package com.betrybe.minhaconta.presentation;
 
 import com.betrybe.minhaconta.business.EnergyAccount;
+import com.betrybe.minhaconta.business.EnergyBill;
 import com.ions.lightdealer.sdk.model.Address;
 import com.ions.lightdealer.sdk.model.Client;
 import com.ions.lightdealer.sdk.model.ElectronicDevice;
@@ -99,17 +100,17 @@ public class Application {
    * Req. 8 – Register address devices.
    */
   public void registerAddressDevices() {
-    String addressRegistration = this.ui.inputAddressRegistration();
-    Address address = this.api.findAddress(addressRegistration);
+    String addressRegistration = ui.inputAddressRegistration();
+    Address address = api.findAddress(addressRegistration);
 
     if (address == null) {
-      this.ui.showMessage("Endereço não encontrado!");
+      ui.showMessage("Endereço não encontrado!");
     } else {
-      int numberOfDevices = this.ui.inputNumberOfDevices();
+      int numberOfDevices = ui.inputNumberOfDevices();
       for (int i = 0; i < numberOfDevices; i++) {
         ElectronicDevice electronicDevice = new ElectronicDevice();
-        this.ui.fillDeviceData(electronicDevice);
-        this.api.addDeviceToAddress(electronicDevice, address);
+        ui.fillDeviceData(electronicDevice);
+        api.addDeviceToAddress(electronicDevice, address);
       }
     }
   }
@@ -118,6 +119,16 @@ public class Application {
    * Req. 9 – Estimates the address energy bill.
    */
   public void estimateAddressBill() {
+    String addressRegistration = ui.inputAddressRegistration();
+    Address address = api.findAddress(addressRegistration);
+
+    if (address == null) {
+      ui.showMessage("Endereço não encontrado!");
+      return;
+    }
+
+    EnergyBill energyBill = new EnergyBill(address, true);
+    ui.showMessage("Valor estimado da conta: " + energyBill.estimate());
   }
 
   /**
