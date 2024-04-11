@@ -24,6 +24,20 @@ public class Application {
    * Req. 4 – Creates CLI menu.
    */
   public void run() {
+    String[]  menu = {
+        "1 - Cadastrar Cliente",
+        "2 - Cadastrar imóvel do cliente",
+        "3 - Cadastrar dispositivos em imóvel",
+        "4 - Estimar conta de imóvel",
+        "5 - Otimizar uso de energia",
+        "6 - Sair",
+    };
+
+    char option = '0';
+    while (true) {
+      ui.inputMenuOption(menu);
+      runOptionAction(option);
+    }
   }
 
   /**
