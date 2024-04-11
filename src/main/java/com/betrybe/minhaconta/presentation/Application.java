@@ -1,6 +1,7 @@
 package com.betrybe.minhaconta.presentation;
 
 import com.betrybe.minhaconta.business.EnergyAccount;
+import com.ions.lightdealer.sdk.model.Address;
 import com.ions.lightdealer.sdk.model.Client;
 import com.ions.lightdealer.sdk.model.ElectronicDevice;
 import com.ions.lightdealer.sdk.service.LightDealerApi;
@@ -83,6 +84,15 @@ public class Application {
    * Req. 7 – Register client address.
    */
   public void registerClientAddress() {
+    String clientCpf = this.ui.inputClientCpf();
+    Client client = this.api.findClient(clientCpf);
+    if (client == null) {
+      this.ui.showMessage("Pessoa cliente não encontrada!");
+    } else {
+      Address address = new Address();
+      this.ui.fillAddressData(address);
+      this.api.addAddressToClient(address, client);
+    }
   }
 
   /**
