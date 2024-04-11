@@ -123,10 +123,11 @@ public class Application {
     Address address = this.api.findAddress(addressRegistration);
 
     if (address == null) {
-      ui.showMessage("Endereço não encontrado!");
+      this.ui.showMessage("Endereço não encontrado!");
     } else {
       EnergyBill energyBill = new EnergyBill(address, true);
-      ui.showMessage("Valor estimado da conta: " + energyBill.estimate());
+
+      this.ui.showMessage("Valor estimado para a conta: " + energyBill.estimate());
     }
   }
 
