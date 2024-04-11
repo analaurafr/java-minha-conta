@@ -34,8 +34,9 @@ public class EnergyBill {
    */
   public static int calculateTotalUsage(ElectronicDevice[] devices) {
     double totalKwh = 0;
-    for (ElectronicDevice device : devices)
+    for (ElectronicDevice device : devices) {
       totalKwh += device.monthlyKwh();
+    }
     return (int) totalKwh;
   }
 
