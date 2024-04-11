@@ -4,6 +4,7 @@ import com.betrybe.minhaconta.business.EnergyAccount;
 import com.ions.lightdealer.sdk.model.ElectronicDevice;
 import com.ions.lightdealer.sdk.service.LightDealerApi;
 
+
 /**
  * The type Application.
  */
@@ -34,8 +35,8 @@ public class Application {
     };
 
     char option = '0';
-    while (true) {
-      ui.inputMenuOption(menu);
+    while (option != '6') {
+      option = ui.inputMenuOption(menu);
       runOptionAction(option);
     }
   }
