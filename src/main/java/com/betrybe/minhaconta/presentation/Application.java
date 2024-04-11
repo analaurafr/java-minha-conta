@@ -150,7 +150,7 @@ public class Application {
    */
   public void suggestReducedUsage(EnergyAccount energyAccount) {
     ElectronicDevice[] highConsumptionDevices = energyAccount.findHighConsumptionDevices();
-    ui.showMessage("Considere reduzir o uso dos seguintes dispositivos: ");
+    ui.showMessage("Considere reduzir o uso dos seguintes dispositivos:");
     for (ElectronicDevice device : highConsumptionDevices) {
       ui.showMessage(device.getName());
     }
